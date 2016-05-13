@@ -1,0 +1,24 @@
+/* Root of the object tree */
+.root {
+}
+
+
+/* Select elements by their CSS class ("styleClass" attribute) */
+.formTitle {
+	-fx-font-size: 25.0px;
+	-fx-font-weight: bold;
+	-fx-alignment: center;
+}
+
+
+/* Select element by its "fx:id" attribute */
+#resultTable #birthDateColumn {
+	-fx-alignment: center-right;
+}
+
+
+/* Select elements using the "selected" pseudo-selector */
+.table-view .table-row-cell:selected {
+	-fx-font-weight: bold;
+	-fx-font-size: 130.0%;
+}

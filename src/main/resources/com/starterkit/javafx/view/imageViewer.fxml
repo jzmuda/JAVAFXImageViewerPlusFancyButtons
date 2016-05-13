@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="imageView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="865.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.starterkit.javafx.controller.ImageController">
+   <children>
+      <ScrollPane fx:id="scrollPanel" hvalue="0.5" layoutX="90.0" layoutY="1.0" pannable="true" prefHeight="741.0" prefWidth="1034.0" vvalue="0.5" AnchorPane.bottomAnchor="123.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="1.0">
+         <content>
+            <ImageView fx:id="scrollableImageView" fitHeight="720.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+               <viewport>
+                  <Rectangle2D />
+               </viewport></ImageView>
+         </content></ScrollPane>
+      <Button fx:id="buttonNext" layoutX="1137.0" layoutY="256.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#nextImageAction" prefHeight="80.0" prefWidth="20.0" text="%button.next" />
+      <ListView fx:id="miniatureView" editable="true" layoutX="90.0" layoutY="744.0" nodeOrientation="LEFT_TO_RIGHT" orientation="HORIZONTAL" prefHeight="90.0" prefWidth="1047.0" />
+      <Label fx:id="labelPath" layoutX="86.0" layoutY="835.0" prefHeight="21.0" prefWidth="572.0" text="%label.path" />
+      <VBox layoutX="6.0" layoutY="93.0" prefHeight="578.0" prefWidth="80.0">
+         <children>
+            <Button fx:id="buttonPath" mnemonicParsing="false" onAction="#pathButtonAction" prefHeight="80.0" prefWidth="80.0" text="%button.path" />
+            <BorderPane prefHeight="80.0" prefWidth="80.0">
+               <center>
+                  <Button fx:id="buttonSlideshow" mnemonicParsing="false" onAction="#slideShowAction" prefHeight="40.0" prefWidth="40.0" text="%button.slideshow" BorderPane.alignment="CENTER" />
+               </center>
+               <top>
+                  <Label prefHeight="21.0" prefWidth="70.0" text="%label.slideshow" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+            <GridPane prefHeight="80.0" prefWidth="80.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="buttonPrevious" mnemonicParsing="false" onAction="#previousImageAction" prefHeight="80.0" prefWidth="20.0" text="%button.previous" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <HBox prefHeight="351.0" prefWidth="80.0">
+               <children>
+                  <Label fx:id="labelZoom" prefHeight="31.0" prefWidth="62.0" rotate="-90.0" text="%label.zoom" />
+                  <Slider fx:id="sliderZoom" blockIncrement="0.1" majorTickUnit="1.0" max="10.0" min="0.1" minorTickCount="10" orientation="VERTICAL" prefHeight="300.0" prefWidth="18.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label fx:id="labelError" layoutX="658.0" layoutY="835.0" prefHeight="21.0" prefWidth="479.0" />
+   </children>
+</AnchorPane>
