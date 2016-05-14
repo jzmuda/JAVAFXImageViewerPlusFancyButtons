@@ -39,6 +39,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+               <!-- REV: po co gridpane skoro jest w nim tylko 1 element -->
                   <Button fx:id="buttonPrevious" mnemonicParsing="false" onAction="#previousImageAction" prefHeight="80.0" prefWidth="20.0" text="%button.previous" GridPane.columnIndex="1" />
                </children>
             </GridPane>

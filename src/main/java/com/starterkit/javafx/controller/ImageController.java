@@ -50,8 +50,10 @@ import javafx.util.Duration;
 public class ImageController {
 
 	private static final Logger LOG = Logger.getLogger(ImageController.class);
+	// REV: coding conventions
 	private double IMAGEWIDTH;
 	private double IMAGEHEIGHT;
+	// REV: style powinny byc zdefiniowane w CSSie
 	private String PLAY ="-fx-background-color: green;-fx-shape : \"M 10,10 L 10,20 17,15 Z\";-fx-position-shape: true; -fx-scale-shape: true;-fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );";
 	private String STOP ="-fx-background-color: red;-fx-shape : \"M 10,10 L 10,20 20,20, 20, 10 Z\";-fx-position-shape: true; -fx-scale-shape: true;-fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );";
 	private int currentIndex;
@@ -229,6 +231,7 @@ public class ImageController {
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				scrollableImageView.setFitWidth(IMAGEWIDTH*newValue.doubleValue());
 				scrollableImageView.setFitHeight(IMAGEHEIGHT*newValue.doubleValue());
+				// REV: po co ustawiasz content przy zoomowaniu?
 				scrollPanel.setContent(null);
 				scrollPanel.setContent(scrollableImageView);
 			}
@@ -254,12 +257,14 @@ public class ImageController {
 		slideshowOn=!slideshowOn;
 		if(slideshowOn) {
 			sleepingThreadSlideshow();
+			// REV: lepiej podpinac/usuwac klase CSS
 			buttonSlideshow.setStyle(STOP);
 		}
 		else
 			buttonSlideshow.setStyle(PLAY);
 	}
 	
+	// REV: nieuzywana metoda
 	public FadeTransition getFadeTransition(ImageView imageView, double fromValue, double toValue, int durationInMilliseconds) {
 
 	      FadeTransition ft = new FadeTransition(Duration.millis(durationInMilliseconds), imageView);
@@ -300,8 +305,10 @@ private void nextImage() {
 private void selectImage(Path newFile) {
 	Image image = new Image(newFile.toUri().toString(), true);
 	scrollableImageView.setImage(image);
+	// REV: po co ustawiasz null?
 	scrollPanel.setContent(null);
 	scrollPanel.setContent(scrollableImageView);
+	// REV: wystarczy zrobic to tylko raz! tutaj rejestrujesz nowy listener przy kazdym kliknieciu
 	connectSliderZoomToScrollableImageView();
 }
 
@@ -312,6 +319,7 @@ private List<Path> load(Path directory) {
 		Files.newDirectoryStream(directory, "*.{jpg,jpeg,png,bmp,gif,JPG,JPEG,PNG,BMP,GIF}").forEach(file -> files.add(file));
 		labelError.setText("  Image files found: "+files.size());
 	} catch (IOException e) {
+		// REV: bledy powinno sie logowac na poziomie ERROR
 		LOG.debug(e.getStackTrace());
 		labelError.setText("Unexpected Error during image search!");
 	}
@@ -319,6 +327,7 @@ private List<Path> load(Path directory) {
 }
 
 private void disactivateMenu() {
+	// REV: lepiej zrobic to przez binding
 	buttonSlideshow.setDisable(true);
 	buttonPrevious.setDisable(true);
 	buttonNext.setDisable(true);
@@ -327,6 +336,7 @@ private void disactivateMenu() {
 }
 
 private void activateMenu() {
+	// REV: j.w.
 	buttonSlideshow.setDisable(false);
 	buttonPrevious.setDisable(false);
 	buttonNext.setDisable(false);
